@@ -30,7 +30,7 @@ export default function Study() {
 
     if (flashcardsLoading) return <Loading />;
 
-    if (flashcards.length === 0) return <>no flashcards might wanna add some</>;
+    if (flashcards.length === 0) return <>No starred articles! Add some by clicking on the 'star' button on any Wikipedia article while being logged in.</>;
 
     if (
         flashcards.length > 0 &&
