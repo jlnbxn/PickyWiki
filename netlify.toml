@@ -12,7 +12,7 @@ Access-Control-Allow-Origin = "*"
 
 [[redirects]]
 from = "/cors-proxy/*"
-to = ":splat"
+to = "https://:splat"
 status = 200
 force = true
 

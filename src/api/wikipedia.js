@@ -14,7 +14,7 @@ export default class WikipediaApi {
 
   async getCurrentUser() {
     const response = await fetch(
-      "/cors-proxy/https://en.wikipedia.org/w/api.php?action=query&meta=userinfo&uiprop=rights&format=json",
+      "/cors-proxy/en.wikipedia.org/w/api.php?action=query&meta=userinfo&uiprop=rights&format=json",
       {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
@@ -30,7 +30,7 @@ export default class WikipediaApi {
     try {
       let list = [];
       let response = await fetch(
-        "/cors-proxy/https://en.wikipedia.org/w/api.php?action=query&format=json&list=watchlistraw&wrnamespace=0&wrlimit=500",
+        "/cors-proxy/en.wikipedia.org/w/api.php?action=query&format=json&list=watchlistraw&wrnamespace=0&wrlimit=500",
         {
           headers: {
             Authorization: `Bearer ${this.accessToken}`,
@@ -43,7 +43,7 @@ export default class WikipediaApi {
 
       while (response.continue) {
         response = await fetch(
-          `/cors-proxy/https://en.wikipedia.org/w/api.php?action=query&format=json&list=watchlistraw&wrnamespace=0&wrlimit=500&wrcontinue=${response.continue.wrcontinue}`,
+          `/cors-proxy/en.wikipedia.org/w/api.php?action=query&format=json&list=watchlistraw&wrnamespace=0&wrlimit=500&wrcontinue=${response.continue.wrcontinue}`,
           {
             headers: {
               Authorization: `Bearer ${this.accessToken}`,
@@ -63,7 +63,7 @@ export default class WikipediaApi {
 
   async getThumbnailUrl(keyword) {
     const response = await fetch(
-      `/cors-proxy/https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&titles=${keyword}&pithumbsize=600`
+      `/cors-proxy/en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&titles=${keyword}&pithumbsize=600`
     ).then((res) => res.json());
     const pageId = Object.keys(response.query.pages)[0];
     const thumbnailUrl = response.query.pages[pageId].thumbnail?.source;
