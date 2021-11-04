@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+## The Problem
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Being the most thorough repository of human knowledge to ever exist, Wikipedia is a goldmine for people who find satisfaction in knowing a little bit of everything.
 
-## Available Scripts
+However, any systematic approach of memorizing an encyclopedia is doomed to failure.
 
-In the project directory, you can run:
+While flashcard software such as Anki or Mnemosyne exist and have an enthusiastic following evangelizing its benefits for learning, there has never been a marriage between these two extraordinary applications.
 
-### `yarn start`
+## The Solution
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Create a flashcard tool that seamlessly integrates with the Wikipedia experience, allowing you to add any definition you come across instantly to your deck.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Outcome
 
-### `yarn test`
+PickyWiki is a web app that allows you to easily create flashcards of Wikipedia articles.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To do so, just click the little star button you find on any article on the site. (This button adds an article to your watchlist; however, many Wikipedia users aren't using this functionality actively.)
 
-### `yarn build`
+Upon logging into PickyWiki, the app will generate flashcards of your starred articles. You will be shown a word or concept, tasked to remember what it was all about.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then, you can grade your recalling on a scale of 0-5, with the following corresponding qualities:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 5: perfect response.
+- 4: correct response after a hesitation.
+- 3: correct response recalled with serious difficulty.
+- 2: incorrect response; where the correct one seemed easy to recall.
+- 1: incorrect response; the correct one remembered.
+- 0: complete blackout.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Log In](./assets/login.png "Sign in directly with your Wikipedia account")
 
-### `yarn eject`
+![Question](./assets/question.png "What was that thing all about again?")
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Answer](./assets/answer.png "Oh, right. Complete Blackout.")
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Modal](./assets/modal.png "Click the image and get a better picture of your learning material.")
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+In case you starred a Wikipedia article, but didn’t find the inclusion as a flashcard appropriate (as may be the case with a lot of “List” articles you wouldn’t want to remove from your watchlist directly), the "Ignore" button allows you to exclude it from your deck.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Background
 
-## Learn More
+A long time ago, I started saving any article I found online that was even mildly interesting to me.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The fact that such a habit requires no tangible, physical space, in combination with the potential huge return of investment it can give you, made this decision easy for me to rationalize around 10 years ago.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+As an example, just think of the hours searching for something you know you’ve read on the internet versus your own, magnitudes more searchable repository. And let’s not even talk about link rot.
 
-### Code Splitting
+However, I quickly came to the realization that most of the articles I saved, web clipped, archived, or what have you, were Wikipedia articles. All in all, probably a third.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This was a real shame, since the dynamic nature of their respective contents makes archiving them somewhat of a self-defeating purpose. Even worse though, most solutions to saving them can’t deal with the admittedly strange HTML the parsed Wikitext serves.
 
-### Analyzing the Bundle Size
+As such, a little button came to my attention. The Watchlist button.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+While being one of the most prominent sites of the web, this little button is probably underappreciated by the bulk of the population. It allows you to add any article to a list, called the Watchlist, and notifies you whenever an article on it gets edited or otherwise modified.
 
-### Making a Progressive Web App
+I used it mainly as a favorites button, since its cross-device availability made it superior to the actual “Add to list” button, which is a privilege that only the users of the Wikipedia mobile app are given (even the data is stored in your account).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This made it possible for me to create a uniform place where my favorite articles are stored. But what to do with them?
 
-### Advanced Configuration
+I came to the conclusion that, when it came to Wikipedia, my main motivation was not to forget what the thing I looked up was all about. In fact, I was caring about learning what the things I was reading about were all about — in contrast to me saving articles, which basically just served as a reference for something I already knew.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+I’ve also been a fan of Anki for a long time, though it seemed strange to me that there was no plugin that served the purpose of integrating Wikipedia, or at least, not a very convenient one. As such, it's online version served as the direct inspiration.
 
-### Deployment
+## Technical Details
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Pickywiki uses Firebase for logging in, in combination with a custom token, which I created by registering an oAuth application at Wikipedia. Due to the very limited scope (“View a user’s watchlist”), the application promptly got approved.
 
-### `yarn build` fails to minify
+Thus, the user doesn’t have to create a redundant, additional account and can login with their actual Wikipedia credentials.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The Bootstrap design choice stems directly from the original.
+
+![Anki Web](./assets/anki-web.png "Anki Web")
+
+Upon signing in, their watchlist is fetched and for each (new) entry a flashcard object is generated, which then gets fed into the SM-2 algorithm.
+
+Depending on your grading, the date at which you will see the same card again changes. It is updated and the Firebase database is filtered accordingly to show you the next due card.
+
+## Expanding on the Features
+
+Thanks to Wikimedia's [Unified Login](https://en.wikipedia.org/wiki/Wikipedia:Unified_login), signing in gives you access to the other projects of Wikimedia as well, including the watchlists associated with the account. Thus, implementing an additional Wiktionary deck, for example, would be possible.
+
+An additional integration with Anki would be optimal, though their lack of API makes this not a realizable prospect.
+
+Offering the option of exporting the cards as an anikpg. file is something I considered, however, this would have to be repeated every time the user adds a card, which is less than optimal.
+
+While certain applications do sync with AnkiWeb — an example is [ankigenbot](https://github.com/damaru2/ankigenbot) — the way they accomplish this is by semi-automatically adding the cards with Selenium or similar technologies over the web interface, which I deemed inappropriate due to the potentially huge size of a user's watchlist. (In my case, this would be over 1200 entries.)
