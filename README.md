@@ -12,7 +12,7 @@ Create a flashcard tool that seamlessly integrates with the Wikipedia experience
 
 ## Outcome
 
-PickyWiki is a web app that allows you to easily create flashcards of Wikipedia articles.
+**PickyWiki** is a web app that allows you to easily create flashcards of Wikipedia articles.
 
 To do so, just click the little star button you find on any article on the site. (This button adds an article to your watchlist; however, many Wikipedia users aren't using this functionality actively.)
 
@@ -27,15 +27,53 @@ Then, you can grade your recalling on a scale of 0-5, with the following corresp
 - 1: incorrect response; the correct one remembered.
 - 0: complete blackout.
 
-![Log In](./assets/login.png "Sign in directly with your Wikipedia account")
+<figure>
+  <img
+  src="./docs/assets/img/login.png"
+  alt="Sign in with Wikipedia"/>
+  <figcaption>Sign in directly with your Wikipedia account</figcaption>
+</figure>
 
-![Question](./assets/question.png "What was that thing all about again?")
+<figure>
+  <img
+  src="./docs/assets/img/question.png"
+  alt="Question: What is Anautogeny?"/>
+  <figcaption>What was that thing all about again?</figcaption>
+</figure>
 
-![Answer](./assets/answer.png "Oh, right. Complete Blackout.")
+<figure>
+  <img
+  src="./docs/assets/img/answer.png"
+  alt="Answer"/>
+  <figcaption>Oh, right. Complete Blackout.</figcaption>
+</figure>
 
-![Modal](./assets/modal.png "Click the image and get a better picture of your learning material.")
+<figure>
+  <img
+  src="./docs/assets/img/modal.png"
+  alt="Modal"/>
+  <figcaption>Click the image and get a better picture of your learning material.</figcaption>
+</figure>
 
 In case you starred a Wikipedia article, but didn’t find the inclusion as a flashcard appropriate (as may be the case with a lot of “List” articles you wouldn’t want to remove from your watchlist directly), the "Ignore" button allows you to exclude it from your deck.
+
+### Built With
+
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Netlify](https://netlify.com)
+- [Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page)
+
+## Getting Started
+
+1. [Create a Wikipedia OAuth Application](https://meta.wikimedia.org/wiki/Special:OAuthConsumerRegistration/propose), use "http://localhost:8888/" as a callback URL
+2. Create an .env file in the root of the project based on .env.example
+3. `npm install netlify-cli -g`
+4. `netlify dev`
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Background
 
@@ -69,7 +107,12 @@ Thus, the user doesn’t have to create a redundant, additional account and can 
 
 The Bootstrap design choice stems directly from the original.
 
-![Anki Web](./assets/anki-web.png "Anki Web")
+<figure>
+  <img
+  src="./docs/assets/img/anki-web.png"
+  alt="Anki Web"/>
+  <figcaption>Anki Web</figcaption>
+</figure>
 
 Upon signing in, their watchlist is fetched and for each (new) entry a flashcard object is generated, which then gets fed into the SM-2 algorithm.
 
@@ -84,3 +127,7 @@ An additional integration with Anki would be optimal, though their lack of API m
 Offering the option of exporting the cards as an anikpg. file is something I considered, however, this would have to be repeated every time the user adds a card, which is less than optimal.
 
 While certain applications do sync with AnkiWeb — an example is [ankigenbot](https://github.com/damaru2/ankigenbot) — the way they accomplish this is by semi-automatically adding the cards with Selenium or similar technologies over the web interface, which I deemed inappropriate due to the potentially huge size of a user's watchlist. (In my case, this would be over 1200 entries.)
+
+## Acknowledgments
+
+- [SuperMemo](https://github.com/maxvien/supermemo)
